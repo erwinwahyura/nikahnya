@@ -2,91 +2,102 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>Erwin &amp; Farras — 2 Juli 2026</title>
-  <meta name="description" content="Undangan Akad Nikah Erwin Wahyu Ramadhan & Farras Caesarmas Putri — Kamis, 2 Juli 2026" />
-
-  <!-- Open Graph (WhatsApp preview) -->
+  <meta name="description" content="Undangan Akad Nikah Erwin Wahyu Ramadhan & Farras Caesarmas Putri" />
   <meta property="og:title" content="Erwin & Farras — Undangan Akad Nikah" />
   <meta property="og:description" content="Kamis, 2 Juli 2026 · KUA Kembangan, Jakarta Barat" />
   <meta property="og:image" content="assets/cover.png" />
-  <meta property="og:type" content="website" />
-
   <link rel="stylesheet" href="style.css" />
   <audio id="bg-music" src="assets/music.mp3" loop preload="none"></audio>
 </head>
 <body>
+<div id="app">
 
-<!-- Music toggle -->
-<button id="music-btn" aria-label="Toggle music">🔇</button>
-
-<div class="card">
-
-  <!-- 1. Cover -->
-  <section id="cover">
-    <img src="assets/cover.png" alt="Erwin & Farras" />
-  </section>
-
-  <!-- 2. Quran verse -->
-  <section id="quran">
-    <img src="assets/quran.png" alt="QS. Ar-Rum 21" />
-  </section>
-
-  <!-- 3. Invitation details -->
-  <section id="invitation">
-    <img src="assets/event.png" alt="Detail undangan" />
-  </section>
-
-  <!-- 4. Countdown -->
-  <section id="countdown">
-    <h2>Menuju Hari Bahagia</h2>
-    <div class="countdown-grid">
-      <div class="countdown-item">
-        <span class="countdown-num" id="days">00</span>
-        <span class="countdown-label">Hari</span>
-      </div>
-      <span class="divider-dot">·</span>
-      <div class="countdown-item">
-        <span class="countdown-num" id="hours">00</span>
-        <span class="countdown-label">Jam</span>
-      </div>
-      <span class="divider-dot">·</span>
-      <div class="countdown-item">
-        <span class="countdown-num" id="mins">00</span>
-        <span class="countdown-label">Menit</span>
-      </div>
-      <span class="divider-dot">·</span>
-      <div class="countdown-item">
-        <span class="countdown-num" id="secs">00</span>
-        <span class="countdown-label">Detik</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. Gift -->
-  <section id="gift">
-    <img src="assets/gift.png" alt="Informasi hadiah" />
-  </section>
-  <div class="gift-actions">
-    <button class="copy-btn" id="copy-btn">🏦 &nbsp;Salin Nomor BCA</button>
-    <a
-      class="wa-btn"
-      href="https://wa.me/6281290536767"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      💬 &nbsp;Konfirmasi via WhatsApp
-    </a>
+  <!-- Story progress bars -->
+  <div id="progress">
+    <div class="seg"><div class="fill"></div></div>
+    <div class="seg"><div class="fill"></div></div>
+    <div class="seg"><div class="fill"></div></div>
+    <div class="seg"><div class="fill"></div></div>
+    <div class="seg"><div class="fill"></div></div>
+    <div class="seg"><div class="fill"></div></div>
   </div>
 
-  <!-- 6. Closing -->
-  <section id="closing">
-    <img src="assets/closing.png" alt="Penutup" />
-  </section>
+  <!-- Music toggle -->
+  <button id="music-btn" aria-label="Toggle music">♪</button>
 
-  <footer>Made with ♡ for Erwin &amp; Farras · 2026</footer>
+  <!-- Slides -->
+  <div id="slides">
+
+    <!-- 0: Cover -->
+    <div class="slide" data-state="active">
+      <img src="assets/cover.png" alt="Erwin & Farras" />
+      <p class="tap-hint">ketuk untuk membuka ›</p>
+    </div>
+
+    <!-- 1: Quran verse -->
+    <div class="slide" data-state="right">
+      <img src="assets/quran.png" alt="QS. Ar-Rum 21" />
+    </div>
+
+    <!-- 2: Invitation details -->
+    <div class="slide" data-state="right">
+      <img src="assets/event.png" alt="Detail undangan" />
+    </div>
+
+    <!-- 3: Countdown (custom HTML) -->
+    <div class="slide countdown-slide" data-state="right">
+      <div class="cd-card">
+        <p class="cd-eyebrow">Insya Allah</p>
+        <h2 class="cd-title">Menuju Hari Bahagia</h2>
+        <div class="cd-grid">
+          <div class="cd-cell"><b id="days">00</b><span>Hari</span></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-cell"><b id="hours">00</b><span>Jam</span></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-cell"><b id="mins">00</b><span>Menit</span></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-cell"><b id="secs">00</b><span>Detik</span></div>
+        </div>
+        <p class="cd-date">Kamis, 2 Juli 2026</p>
+        <p class="cd-venue">KUA Kembangan · Jakarta Barat</p>
+      </div>
+    </div>
+
+    <!-- 4: Gift -->
+    <div class="slide gift-slide" data-state="right">
+      <img src="assets/gift.png" alt="Informasi hadiah" />
+      <div class="gift-actions">
+        <button class="copy-btn" id="copy-btn">🏦&nbsp; Salin Nomor BCA</button>
+        <a class="wa-btn" href="https://wa.me/6281290536767" target="_blank" rel="noopener noreferrer">
+          💬&nbsp; Konfirmasi via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- 5: Closing -->
+    <div class="slide" data-state="right">
+      <img src="assets/closing.png" alt="Penutup" />
+    </div>
+
+  </div>
+
+  <!-- Navigation bar -->
+  <div id="nav">
+    <button id="btn-prev" class="btn-ghost">‹</button>
+    <div id="dots">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+    <button id="btn-next" class="btn-primary">Lanjut ›</button>
+  </div>
+
 </div>
-
 <script src="script.js"></script>
 </body>
 </html>
