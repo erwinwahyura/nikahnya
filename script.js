@@ -1,33 +1,81 @@
-// ── State ──────────────────────────────────────────────────────────────────
+// ── Decorations (CSS flowers/dots injected into .bg-layer) ─────────────────
+const DECO_SHAPES = [
+  { bg: '#f0b4bc', br: '50%',               w: 22, h: 22 },
+  { bg: '#f5df9e', br: '50%',               w: 14, h: 14 },
+  { bg: 'rgba(255,255,255,.52)', br: '50%', w: 20, h: 20 },
+  { bg: '#90c49a', br: '0 60% 60% 0',       w: 11, h: 20, rot:  45 },
+  { bg: '#90c49a', br: '60% 0 0 60%',       w: 11, h: 20, rot: -30 },
+  { bg: '#f0b4bc', br: '50% 50% 0 50%',    w: 18, h: 18, rot:  20 },
+  { bg: '#c9a84c', br: '50%',               w:  8, h:  8 },
+  { bg: '#e8c4ca', br: '50%',               w: 28, h: 28, op: .4 },
+  { bg: '#a8d8b0', br: '50% 0 50% 0',       w: 16, h: 22, rot: 60 },
+  { bg: '#f7e0a0', br: '50%',               w: 10, h: 10 },
+  { bg: '#f0b4bc', br: '50%',               w: 16, h: 16 },
+  { bg: '#90c49a', br: '50% 0',             w: 10, h: 18, rot: 30 },
+];
+const DECO_POS = [
+  { top: '3%',  left: '4%'  }, { top: '7%',  left: '78%' },
+  { top: '14%', left: '85%' }, { top: '20%', left: '3%'  },
+  { top: '32%', left: '87%' }, { top: '38%', left: '2%'  },
+  { top: '52%', left: '82%' }, { top: '58%', left: '5%'  },
+  { top: '68%', left: '84%' }, { top: '74%', left: '3%'  },
+  { top: '84%', left: '6%'  }, { top: '88%', left: '80%' },
+];
+
+function seedDecorations() {
+  document.querySelectorAll('.bg-layer').forEach(layer => {
+    DECO_POS.forEach((pos, i) => {
+      const s  = DECO_SHAPES[i % DECO_SHAPES.length];
+      const el = document.createElement('span');
+      el.className = 'deco';
+      el.style.cssText = `
+        width:${s.w}px; height:${s.h}px;
+        background:${s.bg}; border-radius:${s.br};
+        top:${pos.top}; left:${pos.left};
+        opacity:${s.op || 0.58};
+        --rot:${s.rot || 0}deg;
+        --dur:${2.2 + (i * .35) % 2}s;
+        --delay:${(i * .28) % 2.5}s;
+      `;
+      layer.appendChild(el);
+    });
+  });
+}
+
+// ── Slide navigation ───────────────────────────────────────────────────────
 const slides  = Array.from(document.querySelectorAll('.slide'));
 const dots    = document.querySelectorAll('.dot');
 const segs    = document.querySelectorAll('.seg');
 const btnNext = document.getElementById('btn-next');
 const btnPrev = document.getElementById('btn-prev');
 const total   = slides.length;
-let current   = 0;
+let   current = 0;
 
-// ── Navigation ─────────────────────────────────────────────────────────────
 function goTo(index) {
   if (index < 0 || index >= total) return;
   slides.forEach((s, i) => {
     s.dataset.state = i < index ? 'left' : i > index ? 'right' : 'active';
   });
   current = index;
+
+  const inner = slides[index].querySelector('.slide-inner');
+  if (inner) {
+    inner.classList.remove('entered');
+    void inner.offsetWidth;          // force reflow → re-triggers animation
+    inner.classList.add('entered');
+  }
   updateUI();
 }
 
 function updateUI() {
   dots.forEach((d, i) => d.classList.toggle('active', i === current));
-  segs.forEach((s, i) => s.classList.toggle('done', i < current));
+  segs.forEach((s, i) => s.classList.toggle('done',   i < current));
   btnPrev.classList.toggle('hidden', current === 0);
   btnNext.classList.toggle('hidden', current === total - 1);
 }
 
 btnNext.addEventListener('click', () => goTo(current + 1));
 btnPrev.addEventListener('click', () => goTo(current - 1));
-
-// keyboard (desktop)
 document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight' || e.key === ' ') goTo(current + 1);
   if (e.key === 'ArrowLeft')                   goTo(current - 1);
@@ -35,19 +83,15 @@ document.addEventListener('keydown', e => {
 
 // ── Swipe ──────────────────────────────────────────────────────────────────
 let tx = 0, ty = 0;
-const slidesEl = document.getElementById('slides');
-
-slidesEl.addEventListener('touchstart', e => {
+document.getElementById('slides').addEventListener('touchstart', e => {
   tx = e.touches[0].clientX;
   ty = e.touches[0].clientY;
 }, { passive: true });
-
-slidesEl.addEventListener('touchend', e => {
+document.getElementById('slides').addEventListener('touchend', e => {
   const dx = e.changedTouches[0].clientX - tx;
   const dy = e.changedTouches[0].clientY - ty;
-  if (Math.abs(dx) > Math.abs(dy) * 1.2 && Math.abs(dx) > 44) {
+  if (Math.abs(dx) > Math.abs(dy) * 1.2 && Math.abs(dx) > 44)
     dx < 0 ? goTo(current + 1) : goTo(current - 1);
-  }
 }, { passive: true });
 
 // ── Music ──────────────────────────────────────────────────────────────────
@@ -60,15 +104,12 @@ function setMusic(on) {
   musicBtn.textContent = on ? '♫' : '♪';
   on ? audio.play().catch(() => {}) : audio.pause();
 }
-
 musicBtn.addEventListener('click', e => { e.stopPropagation(); setMusic(!playing); });
-
-// auto-start on first user interaction
 function autoStart() { if (!playing) setMusic(true); }
 document.addEventListener('click',    autoStart, { once: true });
 document.addEventListener('touchend', autoStart, { once: true });
 
-// ── Countdown ──────────────────────────────────────────────────────────────
+// ── Countdown ─────────────────────────────────────────────────────────────
 const TARGET = new Date('2026-07-02T08:00:00+07:00');
 const pad    = n => String(n).padStart(2, '0');
 
@@ -82,17 +123,18 @@ function tick() {
 tick();
 setInterval(tick, 1000);
 
-// ── Copy BCA ───────────────────────────────────────────────────────────────
+// ── Copy BCA ──────────────────────────────────────────────────────────────
 document.getElementById('copy-btn').addEventListener('click', function () {
   navigator.clipboard.writeText('7025308875').then(() => {
     this.classList.add('copied');
     this.textContent = '✓  Tersalin!';
     setTimeout(() => {
       this.classList.remove('copied');
-      this.textContent = '🏦  Salin Nomor BCA';
+      this.textContent = '🏦  Salin Nomor BCA';
     }, 2500);
   });
 });
 
-// ── Init ───────────────────────────────────────────────────────────────────
+// ── Init ──────────────────────────────────────────────────────────────────
+seedDecorations();
 updateUI();
