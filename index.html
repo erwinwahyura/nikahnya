@@ -16,6 +16,7 @@
 <body>
 <div id="app">
 
+  <!-- Story progress bar -->
   <div id="progress">
     <div class="seg"><div class="fill"></div></div>
     <div class="seg"><div class="fill"></div></div>
@@ -25,14 +26,29 @@
     <div class="seg"><div class="fill"></div></div>
   </div>
 
+  <!-- Music toggle -->
   <button id="music-btn" aria-label="Toggle music">♪</button>
 
+  <!-- Swipe / tap arrow hints -->
+  <button class="arr arr-l hidden" id="arr-l" aria-label="Previous">
+    <svg width="11" height="19" viewBox="0 0 11 19" fill="none">
+      <path d="M9 1.5L2 9.5l7 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <button class="arr arr-r" id="arr-r" aria-label="Next">
+    <svg width="11" height="19" viewBox="0 0 11 19" fill="none">
+      <path d="M2 1.5l7 8-7 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <!-- Slides -->
   <div id="slides">
 
-    <!-- 0 · Cover (full-bleed image, fills screen) -->
+    <!-- 0 · Cover video -->
     <div class="slide" id="s-cover" data-state="active">
-      <img class="cover-bg" src="assets/cover.png" alt="Erwin &amp; Farras" />
-      <p class="tap-hint">ketuk untuk membuka ›</p>
+      <video class="cover-media" autoplay muted loop playsinline poster="assets/cover.png">
+        <source src="assets/cover.mp4" type="video/mp4" />
+      </video>
     </div>
 
     <!-- 1 · Quranic verse -->
@@ -134,16 +150,6 @@
     </div>
 
   </div>
-
-  <div id="nav">
-    <button id="btn-prev" class="btn-ghost">‹</button>
-    <div id="dots">
-      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-    </div>
-    <button id="btn-next" class="btn-primary">Lanjut ›</button>
-  </div>
-
 </div>
 <script src="script.js"></script>
 </body>

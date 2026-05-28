@@ -1,19 +1,19 @@
-// ── Decorations (CSS flowers/dots injected into .bg-layer) ─────────────────
-const DECO_SHAPES = [
-  { bg: '#f0b4bc', br: '50%',               w: 22, h: 22 },
-  { bg: '#f5df9e', br: '50%',               w: 14, h: 14 },
+// ── Decorations ────────────────────────────────────────────────────────────
+const SHAPES = [
+  { bg: '#f0b4bc', br: '50%',            w: 22, h: 22 },
+  { bg: '#f5df9e', br: '50%',            w: 14, h: 14 },
   { bg: 'rgba(255,255,255,.52)', br: '50%', w: 20, h: 20 },
-  { bg: '#90c49a', br: '0 60% 60% 0',       w: 11, h: 20, rot:  45 },
-  { bg: '#90c49a', br: '60% 0 0 60%',       w: 11, h: 20, rot: -30 },
-  { bg: '#f0b4bc', br: '50% 50% 0 50%',    w: 18, h: 18, rot:  20 },
-  { bg: '#c9a84c', br: '50%',               w:  8, h:  8 },
-  { bg: '#e8c4ca', br: '50%',               w: 28, h: 28, op: .4 },
-  { bg: '#a8d8b0', br: '50% 0 50% 0',       w: 16, h: 22, rot: 60 },
-  { bg: '#f7e0a0', br: '50%',               w: 10, h: 10 },
-  { bg: '#f0b4bc', br: '50%',               w: 16, h: 16 },
-  { bg: '#90c49a', br: '50% 0',             w: 10, h: 18, rot: 30 },
+  { bg: '#90c49a', br: '0 60% 60% 0',   w: 11, h: 20, rot:  45 },
+  { bg: '#90c49a', br: '60% 0 0 60%',   w: 11, h: 20, rot: -30 },
+  { bg: '#f0b4bc', br: '50% 50% 0 50%', w: 18, h: 18, rot:  20 },
+  { bg: '#c9a84c', br: '50%',            w:  8, h:  8 },
+  { bg: '#e8c4ca', br: '50%',            w: 28, h: 28, op: .4 },
+  { bg: '#a8d8b0', br: '50% 0 50% 0',   w: 16, h: 22, rot: 60 },
+  { bg: '#f7e0a0', br: '50%',            w: 10, h: 10 },
+  { bg: '#f0b4bc', br: '50%',            w: 16, h: 16 },
+  { bg: '#90c49a', br: '50% 0',          w: 10, h: 18, rot: 30 },
 ];
-const DECO_POS = [
+const POS = [
   { top: '3%',  left: '4%'  }, { top: '7%',  left: '78%' },
   { top: '14%', left: '85%' }, { top: '20%', left: '3%'  },
   { top: '32%', left: '87%' }, { top: '38%', left: '2%'  },
@@ -24,8 +24,8 @@ const DECO_POS = [
 
 function seedDecorations() {
   document.querySelectorAll('.bg-layer').forEach(layer => {
-    DECO_POS.forEach((pos, i) => {
-      const s  = DECO_SHAPES[i % DECO_SHAPES.length];
+    POS.forEach((pos, i) => {
+      const s  = SHAPES[i % SHAPES.length];
       const el = document.createElement('span');
       el.className = 'deco';
       el.style.cssText = `
@@ -42,40 +42,46 @@ function seedDecorations() {
   });
 }
 
-// ── Slide navigation ───────────────────────────────────────────────────────
-const slides  = Array.from(document.querySelectorAll('.slide'));
-const dots    = document.querySelectorAll('.dot');
-const segs    = document.querySelectorAll('.seg');
-const btnNext = document.getElementById('btn-next');
-const btnPrev = document.getElementById('btn-prev');
-const total   = slides.length;
-let   current = 0;
+// ── Slides ─────────────────────────────────────────────────────────────────
+const slides = Array.from(document.querySelectorAll('.slide'));
+const segs   = document.querySelectorAll('.seg');
+const arrL   = document.getElementById('arr-l');
+const arrR   = document.getElementById('arr-r');
+const total  = slides.length;
+let current  = 0;
 
 function goTo(index) {
   if (index < 0 || index >= total) return;
+
   slides.forEach((s, i) => {
     s.dataset.state = i < index ? 'left' : i > index ? 'right' : 'active';
   });
   current = index;
 
+  // Pause video when not on cover, resume when back
+  const video = document.querySelector('.cover-media');
+  if (video) index === 0 ? video.play().catch(() => {}) : video.pause();
+
+  // Trigger staggered content animation
   const inner = slides[index].querySelector('.slide-inner');
   if (inner) {
     inner.classList.remove('entered');
-    void inner.offsetWidth;          // force reflow → re-triggers animation
+    void inner.offsetWidth;
     inner.classList.add('entered');
   }
+
   updateUI();
 }
 
 function updateUI() {
-  dots.forEach((d, i) => d.classList.toggle('active', i === current));
-  segs.forEach((s, i) => s.classList.toggle('done',   i < current));
-  btnPrev.classList.toggle('hidden', current === 0);
-  btnNext.classList.toggle('hidden', current === total - 1);
+  segs.forEach((s, i) => s.classList.toggle('done', i < current));
+  arrL.classList.toggle('hidden', current === 0);
+  arrR.classList.toggle('hidden', current === total - 1);
 }
 
-btnNext.addEventListener('click', () => goTo(current + 1));
-btnPrev.addEventListener('click', () => goTo(current - 1));
+arrL.addEventListener('click', () => goTo(current - 1));
+arrR.addEventListener('click', () => goTo(current + 1));
+
 document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight' || e.key === ' ') goTo(current + 1);
   if (e.key === 'ArrowLeft')                   goTo(current - 1);
@@ -87,6 +93,7 @@ document.getElementById('slides').addEventListener('touchstart', e => {
   tx = e.touches[0].clientX;
   ty = e.touches[0].clientY;
 }, { passive: true });
+
 document.getElementById('slides').addEventListener('touchend', e => {
   const dx = e.changedTouches[0].clientX - tx;
   const dy = e.changedTouches[0].clientY - ty;
@@ -112,7 +119,6 @@ document.addEventListener('touchend', autoStart, { once: true });
 // ── Countdown ─────────────────────────────────────────────────────────────
 const TARGET = new Date('2026-07-02T08:00:00+07:00');
 const pad    = n => String(n).padStart(2, '0');
-
 function tick() {
   const diff = Math.max(0, TARGET - Date.now());
   document.getElementById('days').textContent  = pad(Math.floor(diff / 86400000));
