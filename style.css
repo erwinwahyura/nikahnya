@@ -462,8 +462,21 @@ html, body {
 .ring  { position: absolute; width: 28px; height: 28px; border-radius: 50%; border: 3px solid var(--gold); }
 .r1 { top: 0; left: 0; }
 .r2 { top: 0; left: 18px; opacity: .75; }
+.closing-names {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 400; font-style: italic;
+  color: var(--navy); letter-spacing: 0.04em;
+  margin-bottom: 1rem;
+}
+.closing-orn {
+  display: flex; align-items: center; gap: 10px;
+  width: 100%; margin-bottom: 1.25rem;
+}
+.closing-line { flex: 1; height: 0.5px; background: rgba(44,74,110,0.3); }
+.closing-mark { font-size: 10px; color: rgba(44,74,110,0.45); letter-spacing: 0.2em; }
 .closing-thanks {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem; font-weight: 300;
-  color: #3a4a5a; line-height: 1.6; margin-bottom: 12px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; font-weight: 400; font-style: italic;
+  color: var(--navy); line-height: 1.75; margin-bottom: 8px;
+  text-align: center;
 }
