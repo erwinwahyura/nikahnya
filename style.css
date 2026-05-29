@@ -13,7 +13,7 @@
 html, body {
   height: 100%;
   overflow: hidden;
-  background: #8aaccb;
+  background: #000;
 }
 
 /* ── App shell ─────────────────────────────────── */
@@ -129,7 +129,8 @@ html, body {
   touch-action: pan-y;
 }
 
-/* ── Cover: full-bleed video ───────────────────── */
+/* ── Cover: full-bleed video, no background ────── */
+#s-cover { background: #000; }
 .cover-media {
   position: absolute;
   inset: 0;
@@ -354,6 +355,14 @@ html, body {
 }
 .date-line  { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--navy); font-weight: 700; }
 .venue-line { font-family: 'Poppins', sans-serif; font-size: .78rem; color: #556; font-weight: 400; letter-spacing: .3px; }
+
+/* ── Section divider (within merged slide) ─────── */
+.slide-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(27,59,111,.15);
+  margin: 28px 0;
+}
 
 /* ── Gift ──────────────────────────────────────── */
 .bca-card {

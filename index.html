@@ -16,9 +16,8 @@
 <body>
 <div id="app">
 
-  <!-- Story progress bar -->
+  <!-- Story progress bar — 5 slides -->
   <div id="progress">
-    <div class="seg"><div class="fill"></div></div>
     <div class="seg"><div class="fill"></div></div>
     <div class="seg"><div class="fill"></div></div>
     <div class="seg"><div class="fill"></div></div>
@@ -29,7 +28,7 @@
   <!-- Music toggle -->
   <button id="music-btn" aria-label="Toggle music">♪</button>
 
-  <!-- Swipe / tap arrow hints -->
+  <!-- Arrow hints -->
   <button class="arr arr-l hidden" id="arr-l" aria-label="Previous">
     <svg width="11" height="19" viewBox="0 0 11 19" fill="none">
       <path d="M9 1.5L2 9.5l7 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -41,12 +40,11 @@
     </svg>
   </button>
 
-  <!-- Slides -->
   <div id="slides">
 
-    <!-- 0 · Cover video -->
+    <!-- 0 · Cover video (no background — pure video) -->
     <div class="slide" id="s-cover" data-state="active">
-      <video class="cover-media" autoplay muted loop playsinline poster="assets/cover.png">
+      <video class="cover-media" autoplay muted loop playsinline>
         <source src="assets/cover.mp4" type="video/mp4" />
       </video>
     </div>
@@ -93,10 +91,12 @@
       </div>
     </div>
 
-    <!-- 3 · Countdown + event info -->
-    <div class="slide" id="s-countdown" data-state="right">
+    <!-- 3 · Countdown + Gift (merged) -->
+    <div class="slide scrollable" id="s-countdown" data-state="right">
       <div class="bg-layer"></div>
-      <div class="slide-inner centered">
+      <div class="slide-inner">
+
+        <!-- Countdown section -->
         <p class="eyebrow">Menuju Hari Bahagia</p>
         <h2 class="cd-couple">Erwin <span class="cd-amp">&amp;</span> Farras</h2>
         <div class="gold-rule"></div>
@@ -113,13 +113,11 @@
           <p class="date-line">Kamis, 2 Juli 2026</p>
           <p class="venue-line">KUA Kembangan · Jakarta Barat</p>
         </div>
-      </div>
-    </div>
 
-    <!-- 4 · Gift -->
-    <div class="slide scrollable" id="s-gift" data-state="right">
-      <div class="bg-layer"></div>
-      <div class="slide-inner">
+        <!-- Divider -->
+        <div class="slide-divider"></div>
+
+        <!-- Gift section -->
         <p class="body-text">Kami mohon doa dan restu yang tulus untuk perjalanan ibadah dan pernikahan kami.</p>
         <p class="body-text muted-sm">Bagi yang ingin menyampaikan tanda kasih berupa hadiah, dapat melalui rekening berikut:</p>
         <div class="bca-card">
@@ -132,10 +130,11 @@
           <button class="copy-btn" id="copy-btn">🏦&nbsp; Salin Nomor BCA</button>
           <a class="wa-btn" href="https://wa.me/6281290536767" target="_blank" rel="noopener">💬&nbsp; Konfirmasi via WhatsApp</a>
         </div>
+
       </div>
     </div>
 
-    <!-- 5 · Closing -->
+    <!-- 4 · Closing -->
     <div class="slide" id="s-closing" data-state="right">
       <div class="bg-layer"></div>
       <div class="slide-inner centered">
