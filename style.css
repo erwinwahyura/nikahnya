@@ -371,93 +371,80 @@ html, body {
 }
 
 /* ── Gift ──────────────────────────────────────── */
-#s-gift .kanji-bg {
-  position: absolute;
-  font-family: 'Noto Serif JP', serif;
-  font-size: 320px;
-  font-weight: 200;
-  color: rgba(255,255,255,0.12);
-  right: -60px;
-  bottom: -60px;
-  line-height: 1;
-  user-select: none;
-  pointer-events: none;
-  z-index: 1;
-}
 #s-gift .gift-ornament {
   display: flex; align-items: center; gap: 12px;
-  width: 100%; margin-bottom: 2rem;
+  width: 100%; margin-bottom: 1.75rem;
 }
-#s-gift .orn-line { flex: 1; height: 0.5px; background: rgba(44,74,110,0.25); }
-#s-gift .orn-mark { font-family: 'Noto Serif JP', serif; font-size: 11px; font-weight: 200; color: rgba(44,74,110,0.4); letter-spacing: 0.3em; }
-#s-gift .b-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(44,74,110,0.25); }
+#s-gift .orn-line { flex: 1; height: 0.5px; background: rgba(44,74,110,0.3); }
+#s-gift .orn-mark { font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 400; color: rgba(44,74,110,0.5); letter-spacing: 0.3em; }
+#s-gift .b-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(44,74,110,0.35); }
 #s-gift .jp-label {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 9px; font-weight: 300;
-  letter-spacing: 0.55em; color: rgba(44,74,110,0.45);
-  text-transform: uppercase; margin-bottom: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.45em; color: rgba(44,74,110,0.6);
+  text-transform: uppercase; margin-bottom: 1.25rem;
 }
 #s-gift .gift-body {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 17px; font-weight: 400; font-style: italic;
-  line-height: 1.9; color: #2c4a6e;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; font-weight: 400; font-style: italic;
+  line-height: 1.9; color: var(--navy);
   text-align: center; margin-bottom: 0.75rem;
 }
 #s-gift .gift-muted {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 11.5px; font-weight: 300;
-  color: rgba(44,74,110,0.55); text-align: center;
-  line-height: 2; margin-bottom: 1.5rem; letter-spacing: 0.04em;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.82rem; font-weight: 400;
+  color: rgba(30,50,80,0.75); text-align: center;
+  line-height: 1.85; margin-bottom: 1.25rem;
 }
 #s-gift .bca-card {
   width: 100%;
-  background: rgba(255,255,255,0.72);
+  background: rgba(255,255,255,0.82);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 0.5px solid rgba(255,255,255,0.9);
+  border: 0.5px solid rgba(255,255,255,0.95);
   border-radius: 4px;
-  padding: 1.75rem 2rem;
+  padding: 1.5rem 2rem;
   margin: 0 0 1.25rem;
-  display: flex; flex-direction: column; align-items: center; gap: 0.45rem;
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
   position: relative;
 }
 #s-gift .bca-card::before, #s-gift .bca-card::after {
   content: ''; position: absolute;
   width: 16px; height: 16px;
-  border-color: rgba(44,74,110,0.3); border-style: solid;
+  border-color: rgba(44,74,110,0.35); border-style: solid;
 }
 #s-gift .bca-card::before { top: -0.5px; left: -0.5px; border-width: 1.5px 0 0 1.5px; }
 #s-gift .bca-card::after  { bottom: -0.5px; right: -0.5px; border-width: 0 1.5px 1.5px 0; }
-#s-gift .bca-bank   { font-family: 'Noto Serif JP', serif; font-size: 9px; font-weight: 300; letter-spacing: 0.6em; color: rgba(44,74,110,0.5); text-transform: uppercase; margin-bottom: 0; }
-#s-gift .bca-num    { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 300; color: #1e3a5f; letter-spacing: 0.12em; line-height: 1; margin: 0.5rem 0 0.25rem; }
-#s-gift .bca-holder { font-family: 'Noto Serif JP', serif; font-size: 9px; font-weight: 300; letter-spacing: 0.35em; color: rgba(44,74,110,0.4); text-transform: uppercase; margin-top: 0; }
+#s-gift .bca-bank   { font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.4em; color: rgba(30,50,80,0.7); text-transform: uppercase; margin-bottom: 0; }
+#s-gift .bca-num    { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: #1e3a5f; letter-spacing: 0.08em; line-height: 1.1; margin: 0.4rem 0 0.2rem; }
+#s-gift .bca-holder { font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.25em; color: rgba(30,50,80,0.65); text-transform: uppercase; margin-top: 0; }
 #s-gift .action-col { display: flex; flex-direction: column; gap: 0.75rem; width: 100%; }
 #s-gift .copy-btn {
-  width: 100%; padding: 1rem 1.5rem;
-  font-family: 'Noto Serif JP', serif; font-size: 11px; font-weight: 300;
-  letter-spacing: 0.35em; text-align: center;
-  cursor: pointer; border: none; border-radius: 2px;
-  background: #1e3a5f; color: rgba(220,232,245,0.9);
-  transition: background .3s;
+  width: 100%; padding: 0.9rem 1.5rem;
+  font-family: 'Poppins', sans-serif; font-size: 0.82rem; font-weight: 500;
+  letter-spacing: 0.08em; text-align: center;
+  cursor: pointer; border: none; border-radius: 50px;
+  background: var(--navy); color: #fff;
+  transition: background .2s;
 }
-#s-gift .copy-btn:hover { background: #2c4a6e; }
-#s-gift .copy-btn.copied { background: #3a7a5a; color: rgba(200,235,215,0.9); }
+#s-gift .copy-btn:active { background: #0f2547; }
+#s-gift .copy-btn.copied { background: #2e7d32; }
 #s-gift .wa-btn {
-  width: 100%; padding: 1rem 1.5rem;
-  font-family: 'Noto Serif JP', serif; font-size: 11px; font-weight: 300;
-  letter-spacing: 0.35em; text-align: center;
-  border-radius: 2px; text-decoration: none; display: block;
-  background: rgba(255,255,255,0.5); color: rgba(44,74,110,0.7);
-  border: 0.5px solid rgba(44,74,110,0.2);
-  transition: background .3s;
+  width: 100%; padding: 0.9rem 1.5rem;
+  font-family: 'Poppins', sans-serif; font-size: 0.82rem; font-weight: 500;
+  letter-spacing: 0.08em; text-align: center;
+  border-radius: 50px; text-decoration: none; display: block;
+  background: rgba(255,255,255,0.55); color: var(--navy);
+  border: 1px solid rgba(44,74,110,0.3);
+  transition: background .2s;
 }
-#s-gift .wa-btn:hover { background: rgba(255,255,255,0.75); color: #1e3a5f; }
+#s-gift .wa-btn:active { background: rgba(255,255,255,0.8); }
 #s-gift .gift-footer {
-  margin-top: 1.25rem;
-  font-family: 'Noto Serif JP', serif;
-  font-size: 10px; font-weight: 200;
-  letter-spacing: 0.2em; color: rgba(44,74,110,0.38);
-  text-align: center; line-height: 2.2;
+  margin-top: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.72rem; font-weight: 400;
+  color: rgba(30,50,80,0.65);
+  text-align: center; line-height: 1.9;
 }
 
 /* ── Closing ───────────────────────────────────── */
