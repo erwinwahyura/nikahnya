@@ -206,10 +206,10 @@ html, body {
   font-size: .95rem;
   color: var(--navy);
   direction: rtl;
-  line-height: 1.8;
-  margin-bottom: 6px;
+  line-height: 2;
+  margin-bottom: 10px;
 }
-.arabic-sm.muted { opacity: .75; margin-bottom: 14px; }
+.arabic-sm.muted { opacity: .75; margin-bottom: 18px; }
 
 .gold-rule { width: 56px; height: 1px; background: var(--gold); margin: 4px auto 10px; }
 
@@ -224,22 +224,22 @@ html, body {
 }
 .verse-tr {
   font-family: 'Poppins', sans-serif;
-  font-size: .8rem;
+  font-size: .82rem;
   font-weight: 300;
-  line-height: 1.75;
+  line-height: 1.9;
   color: #3a4a5a;
   font-style: italic;
 }
 
 .body-text {
   font-family: 'Poppins', sans-serif;
-  font-size: .8rem;
+  font-size: .82rem;
   font-weight: 300;
-  line-height: 1.7;
+  line-height: 1.85;
   color: #3a4a5a;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
-.body-text.muted-sm { font-size: .75rem; color: #667; margin-bottom: 10px; }
+.body-text.muted-sm { font-size: .77rem; color: #667; margin-bottom: 12px; }
 
 .eyebrow {
   font-family: 'Poppins', sans-serif;
@@ -259,28 +259,28 @@ html, body {
 }
 
 /* ── Invitation ────────────────────────────────── */
-.person-block { margin-bottom: 6px; width: 100%; }
+.person-block { margin-bottom: 10px; width: 100%; }
 .person-name {
   font-family: 'Playfair Display', serif;
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   font-weight: 700;
   color: var(--navy);
-  line-height: 1.3;
+  line-height: 1.35;
 }
 .person-sub {
   font-family: 'Poppins', sans-serif;
-  font-size: .72rem;
+  font-size: .75rem;
   font-weight: 300;
   color: #556;
-  line-height: 1.5;
-  margin-top: 3px;
+  line-height: 1.7;
+  margin-top: 5px;
 }
 .big-amp {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
   color: var(--gold);
   font-style: italic;
-  margin: 6px 0;
+  margin: 10px 0;
 }
 .event-card {
   width: 100%;
@@ -319,7 +319,19 @@ html, body {
 }
 
 /* ── Countdown ─────────────────────────────────── */
-.cd-grid { display: flex; align-items: center; gap: 6px; margin-bottom: 22px; }
+.cd-couple {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.cd-amp {
+  font-style: italic;
+  color: var(--gold);
+}
+.cd-grid { display: flex; align-items: center; gap: 6px; margin-bottom: 20px; }
 .cd-cell {
   min-width: 56px;
   display: flex; flex-direction: column; align-items: center;
@@ -334,8 +346,14 @@ html, body {
 }
 .cd-cell span { font-size: .56rem; letter-spacing: 1.5px; text-transform: uppercase; color: #778; margin-top: 5px; }
 .cd-sep { font-size: 1.8rem; color: var(--navy); opacity: .4; margin-bottom: 18px; }
-.date-line  { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--navy); font-weight: 700; margin-bottom: 4px; }
-.venue-line { font-family: 'Poppins', sans-serif; font-size: .75rem; color: #667; font-weight: 300; }
+.cd-event-info {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.date-line  { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--navy); font-weight: 700; }
+.venue-line { font-family: 'Poppins', sans-serif; font-size: .78rem; color: #556; font-weight: 400; letter-spacing: .3px; }
 
 /* ── Gift ──────────────────────────────────────── */
 .bca-card {
