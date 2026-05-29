@@ -25,10 +25,8 @@
     <div class="seg"><div class="fill"></div></div>
   </div>
 
-  <!-- Music toggle -->
   <button id="music-btn" aria-label="Toggle music">♪</button>
 
-  <!-- Arrow hints -->
   <button class="arr arr-l hidden" id="arr-l" aria-label="Previous">
     <svg width="11" height="19" viewBox="0 0 11 19" fill="none">
       <path d="M9 1.5L2 9.5l7 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -42,7 +40,7 @@
 
   <div id="slides">
 
-    <!-- 0 · Cover video (no background — pure video) -->
+    <!-- 0 · Cover video -->
     <div class="slide" id="s-cover" data-state="active">
       <video class="cover-media" autoplay muted loop playsinline>
         <source src="assets/cover.mp4" type="video/mp4" />
@@ -60,10 +58,12 @@
       </div>
     </div>
 
-    <!-- 2 · Invitation -->
+    <!-- 2 · Invitation + Countdown (merged) -->
     <div class="slide scrollable" id="s-invite" data-state="right">
       <div class="bg-layer"></div>
       <div class="slide-inner">
+
+        <!-- Invitation -->
         <p class="arabic-sm">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
         <p class="arabic-sm muted">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ</p>
         <p class="body-text">Dengan memohon rahmat serta ridho dari Allah SWT, kami bermaksud menyelenggarakan Akad pernikahan kami:</p>
@@ -88,18 +88,12 @@
           </div>
         </div>
         <p class="note-italic">dan Insya Allah juga akan dilaksanakan <strong>akad secara keluarga inti</strong> di <em>Selasar Masjid Nabawi, Madinah.</em></p>
-      </div>
-    </div>
 
-    <!-- 3 · Countdown + Gift (merged) -->
-    <div class="slide scrollable" id="s-countdown" data-state="right">
-      <div class="bg-layer"></div>
-      <div class="slide-inner">
+        <!-- Divider -->
+        <div class="slide-divider"></div>
 
-        <!-- Countdown section -->
+        <!-- Countdown -->
         <p class="eyebrow">Menuju Hari Bahagia</p>
-        <h2 class="cd-couple">Erwin <span class="cd-amp">&amp;</span> Farras</h2>
-        <div class="gold-rule"></div>
         <div class="cd-grid">
           <div class="cd-cell"><b id="days">00</b><span>Hari</span></div>
           <span class="cd-sep">:</span>
@@ -109,15 +103,14 @@
           <span class="cd-sep">:</span>
           <div class="cd-cell"><b id="secs">00</b><span>Detik</span></div>
         </div>
-        <div class="cd-event-info">
-          <p class="date-line">Kamis, 2 Juli 2026</p>
-          <p class="venue-line">KUA Kembangan · Jakarta Barat</p>
-        </div>
 
-        <!-- Divider -->
-        <div class="slide-divider"></div>
+      </div>
+    </div>
 
-        <!-- Gift section -->
+    <!-- 3 · Gift -->
+    <div class="slide scrollable" id="s-gift" data-state="right">
+      <div class="bg-layer"></div>
+      <div class="slide-inner">
         <p class="body-text">Kami mohon doa dan restu yang tulus untuk perjalanan ibadah dan pernikahan kami.</p>
         <p class="body-text muted-sm">Bagi yang ingin menyampaikan tanda kasih berupa hadiah, dapat melalui rekening berikut:</p>
         <div class="bca-card">
@@ -130,7 +123,6 @@
           <button class="copy-btn" id="copy-btn">🏦&nbsp; Salin Nomor BCA</button>
           <a class="wa-btn" href="https://wa.me/6281290536767" target="_blank" rel="noopener">💬&nbsp; Konfirmasi via WhatsApp</a>
         </div>
-
       </div>
     </div>
 
