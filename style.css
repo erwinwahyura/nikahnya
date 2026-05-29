@@ -175,6 +175,10 @@ html, body {
   justify-content: center;
   padding-top: 28px;
 }
+.slide-inner.auto-center {
+  min-height: 100%;
+  justify-content: center;
+}
 
 .slide-inner > * { opacity: 0; }
 

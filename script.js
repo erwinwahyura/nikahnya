@@ -119,8 +119,8 @@ audio.play().then(() => {
   musicBtn.textContent = '♫';
 }).catch(() => {
   function autoStart() { if (!playing) setMusic(true); }
-  document.addEventListener('click',    autoStart, { once: true });
-  document.addEventListener('touchend', autoStart, { once: true });
+  document.addEventListener('click',      autoStart, { once: true });
+  document.addEventListener('touchstart', autoStart, { once: true, passive: true });
 });
 
 // ── Countdown ─────────────────────────────────────────────────────────────
@@ -151,3 +151,7 @@ document.getElementById('copy-btn').addEventListener('click', function () {
 // ── Init ──────────────────────────────────────────────────────────────────
 seedDecorations();
 updateUI();
+
+// Kick video on mobile where autoplay attr alone may be blocked
+const coverVideo = document.getElementById('cover-video');
+if (coverVideo) coverVideo.play().catch(() => {});
