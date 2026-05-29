@@ -112,9 +112,16 @@ function setMusic(on) {
   on ? audio.play().catch(() => {}) : audio.pause();
 }
 musicBtn.addEventListener('click', e => { e.stopPropagation(); setMusic(!playing); });
-function autoStart() { if (!playing) setMusic(true); }
-document.addEventListener('click',    autoStart, { once: true });
-document.addEventListener('touchend', autoStart, { once: true });
+
+// Try autoplay immediately; if browser blocks it, start on first touch/click
+audio.play().then(() => {
+  playing = true;
+  musicBtn.textContent = '♫';
+}).catch(() => {
+  function autoStart() { if (!playing) setMusic(true); }
+  document.addEventListener('click',    autoStart, { once: true });
+  document.addEventListener('touchend', autoStart, { once: true });
+});
 
 // ── Countdown ─────────────────────────────────────────────────────────────
 const TARGET = new Date('2026-07-02T08:00:00+07:00');
