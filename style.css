@@ -78,7 +78,7 @@ html, body {
   transition: opacity .35s, background .2s;
 }
 .arr:active { background: rgba(255,255,255,.35); }
-.arr.hidden { opacity: 0 !important; pointer-events: none; }
+.arr.hidden { opacity: 0 !important; pointer-events: none; animation: none !important; }
 
 .arr-l {
   left: 10px;
