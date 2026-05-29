@@ -164,7 +164,7 @@ html, body {
   z-index: 1;
   width: 100%;
   max-width: 380px;
-  padding: 52px 28px 32px;
+  padding: 44px 24px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -173,7 +173,7 @@ html, body {
 .slide-inner.centered {
   height: 100%;
   justify-content: center;
-  padding-top: 32px;
+  padding-top: 28px;
 }
 
 .slide-inner > * { opacity: 0; }
@@ -183,15 +183,18 @@ html, body {
   to   { opacity: 1; transform: none; }
 }
 .slide-inner.entered > *:nth-child(1)  { animation: enterUp .4s .05s both; }
-.slide-inner.entered > *:nth-child(2)  { animation: enterUp .4s .14s both; }
-.slide-inner.entered > *:nth-child(3)  { animation: enterUp .4s .23s both; }
-.slide-inner.entered > *:nth-child(4)  { animation: enterUp .4s .32s both; }
-.slide-inner.entered > *:nth-child(5)  { animation: enterUp .4s .41s both; }
-.slide-inner.entered > *:nth-child(6)  { animation: enterUp .4s .50s both; }
-.slide-inner.entered > *:nth-child(7)  { animation: enterUp .4s .59s both; }
-.slide-inner.entered > *:nth-child(8)  { animation: enterUp .4s .68s both; }
-.slide-inner.entered > *:nth-child(9)  { animation: enterUp .4s .77s both; }
-.slide-inner.entered > *:nth-child(10) { animation: enterUp .4s .86s both; }
+.slide-inner.entered > *:nth-child(2)  { animation: enterUp .4s .12s both; }
+.slide-inner.entered > *:nth-child(3)  { animation: enterUp .4s .19s both; }
+.slide-inner.entered > *:nth-child(4)  { animation: enterUp .4s .26s both; }
+.slide-inner.entered > *:nth-child(5)  { animation: enterUp .4s .33s both; }
+.slide-inner.entered > *:nth-child(6)  { animation: enterUp .4s .40s both; }
+.slide-inner.entered > *:nth-child(7)  { animation: enterUp .4s .47s both; }
+.slide-inner.entered > *:nth-child(8)  { animation: enterUp .4s .54s both; }
+.slide-inner.entered > *:nth-child(9)  { animation: enterUp .4s .61s both; }
+.slide-inner.entered > *:nth-child(10) { animation: enterUp .4s .68s both; }
+.slide-inner.entered > *:nth-child(11) { animation: enterUp .4s .75s both; }
+.slide-inner.entered > *:nth-child(12) { animation: enterUp .4s .82s both; }
+.slide-inner.entered > *:nth-child(13) { animation: enterUp .4s .89s both; }
 
 /* ── Typography ────────────────────────────────── */
 .arabic-lg {
@@ -207,10 +210,10 @@ html, body {
   font-size: .95rem;
   color: var(--navy);
   direction: rtl;
-  line-height: 2;
-  margin-bottom: 10px;
+  line-height: 1.9;
+  margin-bottom: 6px;
 }
-.arabic-sm.muted { opacity: .75; margin-bottom: 18px; }
+.arabic-sm.muted { opacity: .75; margin-bottom: 12px; }
 
 .gold-rule { width: 56px; height: 1px; background: var(--gold); margin: 4px auto 10px; }
 
@@ -236,11 +239,11 @@ html, body {
   font-family: 'Poppins', sans-serif;
   font-size: .82rem;
   font-weight: 300;
-  line-height: 1.85;
+  line-height: 1.8;
   color: #3a4a5a;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
-.body-text.muted-sm { font-size: .77rem; color: #667; margin-bottom: 12px; }
+.body-text.muted-sm { font-size: .77rem; color: #667; margin-bottom: 8px; }
 
 .eyebrow {
   font-family: 'Poppins', sans-serif;
@@ -260,7 +263,7 @@ html, body {
 }
 
 /* ── Invitation ────────────────────────────────── */
-.person-block { margin-bottom: 10px; width: 100%; }
+.person-block { margin-bottom: 6px; width: 100%; }
 .person-name {
   font-family: 'Playfair Display', serif;
   font-size: 1.08rem;
@@ -281,14 +284,14 @@ html, body {
   font-size: 2rem;
   color: var(--gold);
   font-style: italic;
-  margin: 10px 0;
+  margin: 4px 0;
 }
 .event-card {
   width: 100%;
   display: flex;
   border-radius: 14px;
   overflow: hidden;
-  margin: 8px 0 12px;
+  margin: 6px 0 8px;
 }
 .ev-left {
   flex: 1;
@@ -316,7 +319,6 @@ html, body {
   color: #667;
   line-height: 1.6;
   font-style: italic;
-  padding-bottom: 80px; /* room for arrows */
 }
 
 /* ── Countdown ─────────────────────────────────── */
@@ -332,21 +334,21 @@ html, body {
   font-style: italic;
   color: var(--gold);
 }
-.cd-grid { display: flex; align-items: center; gap: 6px; margin-bottom: 20px; }
+.cd-grid { display: flex; align-items: center; gap: 5px; margin-bottom: 0; }
 .cd-cell {
-  min-width: 56px;
+  min-width: 52px;
   display: flex; flex-direction: column; align-items: center;
   background: rgba(255,255,255,.5);
-  border-radius: 12px;
-  padding: 10px 6px 8px;
+  border-radius: 10px;
+  padding: 8px 4px 6px;
 }
 .cd-cell b {
   font-family: 'Playfair Display', serif;
-  font-size: 2.5rem; font-weight: 700;
+  font-size: 2.2rem; font-weight: 700;
   color: var(--navy); line-height: 1;
 }
-.cd-cell span { font-size: .56rem; letter-spacing: 1.5px; text-transform: uppercase; color: #778; margin-top: 5px; }
-.cd-sep { font-size: 1.8rem; color: var(--navy); opacity: .4; margin-bottom: 18px; }
+.cd-cell span { font-size: .54rem; letter-spacing: 1.5px; text-transform: uppercase; color: #778; margin-top: 4px; }
+.cd-sep { font-size: 1.6rem; color: var(--navy); opacity: .4; margin-bottom: 14px; }
 .cd-event-info {
   margin-top: 4px;
   display: flex;
@@ -361,7 +363,7 @@ html, body {
   width: 100%;
   height: 1px;
   background: rgba(27,59,111,.15);
-  margin: 28px 0;
+  margin: 16px 0;
 }
 
 /* ── Gift ──────────────────────────────────────── */
@@ -375,7 +377,7 @@ html, body {
 .bca-bank   { font-family: 'Poppins', sans-serif; font-size: .65rem; letter-spacing: 2.5px; font-weight: 600; color: #005a8e; margin-bottom: 6px; }
 .bca-num    { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 700; color: var(--navy); letter-spacing: 2px; }
 .bca-holder { font-family: 'Poppins', sans-serif; font-size: .7rem; color: #667; margin-top: 4px; letter-spacing: .5px; }
-.action-col { display: flex; flex-direction: column; gap: 10px; width: 100%; padding-bottom: 80px; }
+.action-col { display: flex; flex-direction: column; gap: 10px; width: 100%; }
 .copy-btn {
   background: var(--navy); color: #fff;
   border: none; border-radius: 50px;
