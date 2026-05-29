@@ -113,12 +113,15 @@ function setMusic(on) {
 }
 musicBtn.addEventListener('click', e => { e.stopPropagation(); setMusic(!playing); });
 
-// Try autoplay immediately; if browser blocks it, start on first touch/click
+// Start muted so browser allows autoplay, unmute on first interaction
 audio.play().then(() => {
   playing = true;
   musicBtn.textContent = '♫';
+  function unmute() { audio.muted = false; }
+  document.addEventListener('click',      unmute, { once: true });
+  document.addEventListener('touchstart', unmute, { once: true, passive: true });
 }).catch(() => {
-  function autoStart() { if (!playing) setMusic(true); }
+  function autoStart() { if (!playing) { audio.muted = false; setMusic(true); } }
   document.addEventListener('click',      autoStart, { once: true });
   document.addEventListener('touchstart', autoStart, { once: true, passive: true });
 });
