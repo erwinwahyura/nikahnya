@@ -371,35 +371,94 @@ html, body {
 }
 
 /* ── Gift ──────────────────────────────────────── */
-.bca-card {
+#s-gift .kanji-bg {
+  position: absolute;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 320px;
+  font-weight: 200;
+  color: rgba(255,255,255,0.12);
+  right: -60px;
+  bottom: -60px;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  z-index: 1;
+}
+#s-gift .gift-ornament {
+  display: flex; align-items: center; gap: 12px;
+  width: 100%; margin-bottom: 2rem;
+}
+#s-gift .orn-line { flex: 1; height: 0.5px; background: rgba(44,74,110,0.25); }
+#s-gift .orn-mark { font-family: 'Noto Serif JP', serif; font-size: 11px; font-weight: 200; color: rgba(44,74,110,0.4); letter-spacing: 0.3em; }
+#s-gift .b-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(44,74,110,0.25); }
+#s-gift .jp-label {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 9px; font-weight: 300;
+  letter-spacing: 0.55em; color: rgba(44,74,110,0.45);
+  text-transform: uppercase; margin-bottom: 1.5rem;
+}
+#s-gift .gift-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px; font-weight: 400; font-style: italic;
+  line-height: 1.9; color: #2c4a6e;
+  text-align: center; margin-bottom: 0.75rem;
+}
+#s-gift .gift-muted {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 11.5px; font-weight: 300;
+  color: rgba(44,74,110,0.55); text-align: center;
+  line-height: 2; margin-bottom: 1.5rem; letter-spacing: 0.04em;
+}
+#s-gift .bca-card {
   width: 100%;
-  background: rgba(255,255,255,.6);
-  border-radius: 16px;
-  padding: 20px;
-  margin: 4px 0 12px;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 0.5px solid rgba(255,255,255,0.9);
+  border-radius: 4px;
+  padding: 1.75rem 2rem;
+  margin: 0 0 1.25rem;
+  display: flex; flex-direction: column; align-items: center; gap: 0.45rem;
+  position: relative;
 }
-.bca-bank   { font-family: 'Poppins', sans-serif; font-size: .65rem; letter-spacing: 2.5px; font-weight: 600; color: #005a8e; margin-bottom: 6px; }
-.bca-num    { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 700; color: var(--navy); letter-spacing: 2px; }
-.bca-holder { font-family: 'Poppins', sans-serif; font-size: .7rem; color: #667; margin-top: 4px; letter-spacing: .5px; }
-.action-col { display: flex; flex-direction: column; gap: 10px; width: 100%; }
-.copy-btn {
-  background: var(--navy); color: #fff;
-  border: none; border-radius: 50px;
-  padding: 13px 24px;
-  font-family: 'Poppins', sans-serif; font-size: .88rem; font-weight: 500;
-  cursor: pointer; transition: background .2s;
+#s-gift .bca-card::before, #s-gift .bca-card::after {
+  content: ''; position: absolute;
+  width: 16px; height: 16px;
+  border-color: rgba(44,74,110,0.3); border-style: solid;
 }
-.copy-btn:active { background: #0f2547; }
-.copy-btn.copied { background: #2e7d32; }
-.wa-btn {
-  display: flex; align-items: center; justify-content: center;
-  background: var(--wa); color: #fff;
-  text-decoration: none; border-radius: 50px;
-  padding: 13px 24px;
-  font-family: 'Poppins', sans-serif; font-size: .88rem; font-weight: 500;
-  transition: background .2s;
+#s-gift .bca-card::before { top: -0.5px; left: -0.5px; border-width: 1.5px 0 0 1.5px; }
+#s-gift .bca-card::after  { bottom: -0.5px; right: -0.5px; border-width: 0 1.5px 1.5px 0; }
+#s-gift .bca-bank   { font-family: 'Noto Serif JP', serif; font-size: 9px; font-weight: 300; letter-spacing: 0.6em; color: rgba(44,74,110,0.5); text-transform: uppercase; margin-bottom: 0; }
+#s-gift .bca-num    { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 300; color: #1e3a5f; letter-spacing: 0.12em; line-height: 1; margin: 0.5rem 0 0.25rem; }
+#s-gift .bca-holder { font-family: 'Noto Serif JP', serif; font-size: 9px; font-weight: 300; letter-spacing: 0.35em; color: rgba(44,74,110,0.4); text-transform: uppercase; margin-top: 0; }
+#s-gift .action-col { display: flex; flex-direction: column; gap: 0.75rem; width: 100%; }
+#s-gift .copy-btn {
+  width: 100%; padding: 1rem 1.5rem;
+  font-family: 'Noto Serif JP', serif; font-size: 11px; font-weight: 300;
+  letter-spacing: 0.35em; text-align: center;
+  cursor: pointer; border: none; border-radius: 2px;
+  background: #1e3a5f; color: rgba(220,232,245,0.9);
+  transition: background .3s;
 }
-.wa-btn:active { background: #1aaa52; }
+#s-gift .copy-btn:hover { background: #2c4a6e; }
+#s-gift .copy-btn.copied { background: #3a7a5a; color: rgba(200,235,215,0.9); }
+#s-gift .wa-btn {
+  width: 100%; padding: 1rem 1.5rem;
+  font-family: 'Noto Serif JP', serif; font-size: 11px; font-weight: 300;
+  letter-spacing: 0.35em; text-align: center;
+  border-radius: 2px; text-decoration: none; display: block;
+  background: rgba(255,255,255,0.5); color: rgba(44,74,110,0.7);
+  border: 0.5px solid rgba(44,74,110,0.2);
+  transition: background .3s;
+}
+#s-gift .wa-btn:hover { background: rgba(255,255,255,0.75); color: #1e3a5f; }
+#s-gift .gift-footer {
+  margin-top: 1.25rem;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 10px; font-weight: 200;
+  letter-spacing: 0.2em; color: rgba(44,74,110,0.38);
+  text-align: center; line-height: 2.2;
+}
 
 /* ── Closing ───────────────────────────────────── */
 .big-name {

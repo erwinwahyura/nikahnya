@@ -74,7 +74,7 @@ function goTo(index) {
 }
 
 function updateUI() {
-  segs.forEach((s, i) => s.classList.toggle('done', i < current));
+  segs.forEach((s, i) => s.classList.toggle('done', i <= current));
   arrL.classList.toggle('hidden', current === 0);
   arrR.classList.toggle('hidden', current === total - 1);
 }
@@ -143,10 +143,10 @@ setInterval(tick, 1000);
 document.getElementById('copy-btn').addEventListener('click', function () {
   navigator.clipboard.writeText('7025308875').then(() => {
     this.classList.add('copied');
-    this.textContent = '✓  Tersalin!';
+    this.textContent = 'Tersalin ✓';
     setTimeout(() => {
       this.classList.remove('copied');
-      this.textContent = '🏦  Salin Nomor BCA';
+      this.textContent = 'Salin Nomor Rekening';
     }, 2500);
   });
 });
